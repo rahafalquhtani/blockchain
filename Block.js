@@ -1,6 +1,6 @@
-//import sha256 from 'crypto-js/sha256';
+import sha256 from 'crypto-js/sha256.js';
 //const hash = require('hash.js'); 
-import crypto from'crypto-js';
+//import crypto from'crypto-js';
 
 class Block {
 
@@ -11,7 +11,7 @@ class Block {
       Nonce = Number,
       TimeStamp,
       hight = Number,
-   PrevosHash = string
+      PrevosHash = string
    ) {
       this.Name = Name;
       this.Data = Data;
@@ -21,16 +21,13 @@ class Block {
       this.TimeStamp = TimeStamp;
       this.PrevosHash = PrevosHash;
       this.Hash = calaulathash();
-
    }
    calaulathash() {
-      return crypto(this.hight + this.Data +this.TimeStamp).tostring();
+      return sha256(this.hight + this.Data +this.TimeStamp).tostring();
       
    }
 
  
 }
-// For Testing 
-// var genesisBlock=new Block();
-// console.log(genesisBlock()) ;
+
 export default Block;
